@@ -72,6 +72,7 @@ public class ProcessDetailsPage extends DialogBox {
 		footerPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
 		footerPanel.addStyleName("gwt-Style-InfoPanel");
 		footerPanel.setWidth("800px");
+		exitButton.addStyleName("gwt-Style-ExitButton");
 		footerPanel.add(exitButton);
 		absolutePanel.add(footerPanel);
 		exitButton.addClickHandler(new ClickHandler() {		
