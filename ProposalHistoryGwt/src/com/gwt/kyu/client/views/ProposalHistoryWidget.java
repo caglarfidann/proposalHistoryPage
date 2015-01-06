@@ -24,10 +24,12 @@ import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.ListDataProvider;
 import com.gwt.kyu.client.presenters.ProposalHistoryPresenter;
 import com.gwt.kyu.client.widgets.ButtonImageCell;
+import com.gwt.kyu.server.ProposalHistoryDetailOperation;
 import com.gwt.kyu.shared.ProposalHistory;
 
 public class ProposalHistoryWidget extends Composite implements ProposalHistoryPresenter.Display{
 	private ProposalHistoryPresenter historyPresenter;
+	 ProposalHistoryDetailOperation operation;
 	private static ProposalHistoryWidgetUiBinder uiBinder = GWT
 			.create(ProposalHistoryWidgetUiBinder.class);
 
@@ -37,6 +39,7 @@ public class ProposalHistoryWidget extends Composite implements ProposalHistoryP
 
 	public ProposalHistoryWidget() {
 		initWidget(uiBinder.createAndBindUi(this));
+		operation=new ProposalHistoryDetailOperation();
 	}
 	@UiField
 	AbsolutePanel mainPanel;
@@ -221,7 +224,8 @@ public class ProposalHistoryWidget extends Composite implements ProposalHistoryP
 		};
 		imageDetail.setFieldUpdater(new FieldUpdater<ProposalHistory, String>() {
 			public void update(int index, ProposalHistory object, String value) {
-				Window.alert("See Detail :"+object.getTeklifNo());
+				ProcessDetailsPage detail=new ProcessDetailsPage(operation.getDetail(object.getSiraNo()));
+				detail.show();
 			}
 		});
 		Column<ProposalHistory, String> imageComment = new Column<ProposalHistory, String>(

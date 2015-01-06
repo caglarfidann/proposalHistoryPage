@@ -40,3 +40,20 @@
 	color: white;
 	border: 2px silver outset;
 }
+.gwt-Bold-DialogBox{
+	border:2px outset;
+	background-color:highlight;
+	border-color:black;
+	font-weight: bolder;
+}
+.gwt-Style-DetailPanel{
+	background-color:#337ab7;
+	border: 1px outset;
+	margin-left: 2px;
+	margin-right: 2px;
+	margin-top: 10px;
+}
+.gwt-Style-DetailTablePanel{
+	margin-left: 2px;
+	margin-top: 2px;
+}

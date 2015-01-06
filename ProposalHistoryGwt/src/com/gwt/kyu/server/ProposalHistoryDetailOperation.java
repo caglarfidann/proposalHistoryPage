@@ -19,7 +19,7 @@ public class ProposalHistoryDetailOperation {
 				detail.setKullaniciKodu("1140"+(i));
 				detail.setBaslangicTarih("04/12/2014 14:00:1"+j);
 				detail.setBitisTarih("04/12/2014 14:00:2"+j);
-				detail.setSüre("00 Saat:0"+j+" dakika");
+				detail.setSure("00 Saat:0"+j+" dakika");
 				detail.setSonuc("SONUC "+j);
 				temp_array.add(detail);
 			}

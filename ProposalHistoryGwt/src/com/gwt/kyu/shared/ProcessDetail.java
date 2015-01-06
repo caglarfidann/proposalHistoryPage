@@ -5,7 +5,7 @@ public class ProcessDetail {
 	private String KullaniciKodu;
 	private String BaslangicTarih;
 	private String BitisTarih;
-	private String Süre;
+	private String Sure;
 	private String Sonuc;
 	
 	public String getSiraNo() {
@@ -32,11 +32,11 @@ public class ProcessDetail {
 	public void setBitisTarih(String bitisTarih) {
 		BitisTarih = bitisTarih;
 	}
-	public String getSüre() {
-		return Süre;
+	public String getSure() {
+		return Sure;
 	}
-	public void setSüre(String süre) {
-		Süre = süre;
+	public void setSure(String sure) {
+		Sure = sure;
 	}
 	public String getSonuc() {
 		return Sonuc;
