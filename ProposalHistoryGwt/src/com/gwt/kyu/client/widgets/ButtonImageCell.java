@@ -11,15 +11,9 @@ public class ButtonImageCell extends ButtonCell{
 	 @Override
 	    public void render(com.google.gwt.cell.client.Cell.Context context, 
 	            String value, SafeHtmlBuilder sb) {
-//	        SafeHtml html = SafeHtmlUtils.fromTrustedString(new Image(value).toString());
-//	        sb.append(html);	 
-		//String icon = "/image/seeDetail.png";
       Image image = new Image(value);
       image.setSize("20px", "20px");
-      //fix the mouse pointer   
       image.getElement().getStyle().setCursor(Cursor.POINTER);
-      //Do something with the DATA
-      //image.setTitle("Delete " + data.asString());
       SafeHtml html = SafeHtmlUtils.fromTrustedString(image.toString());
       sb.append(html);
 		 
