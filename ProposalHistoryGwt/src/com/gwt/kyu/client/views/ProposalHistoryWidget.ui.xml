@@ -1,0 +1,44 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:c="urn:import:com.google.gwt.user.cellview.client">
+	<ui:style>
+	
+	</ui:style>
+	<g:AbsolutePanel ui:field="mainPanel">
+		<g:Label ui:field="historyLabel">Teklif Tarihçesi</g:Label>
+		
+		<g:AbsolutePanel ui:field="historyPanel">		
+		</g:AbsolutePanel>
+		
+		<g:HorizontalPanel ui:field="infoPanel">	
+		<g:cell horizontalAlignment="ALIGN_RIGHT" width="60%">
+		<g:Image ui:field="docImg"></g:Image>
+		</g:cell>
+		<g:cell horizontalAlignment="ALIGN_RIGHT">
+		<g:Label ui:field="docLabel"></g:Label>
+		</g:cell>
+		<g:cell horizontalAlignment="ALIGN_RIGHT">
+		<g:Image ui:field="detailImg"></g:Image>
+		</g:cell>
+		<g:cell horizontalAlignment="ALIGN_RIGHT">
+		<g:Label ui:field="detailLabel"></g:Label>
+		</g:cell>
+		<g:cell horizontalAlignment="ALIGN_RIGHT">
+		<g:Image ui:field="commentImg"></g:Image>
+		</g:cell>
+		<g:cell horizontalAlignment="ALIGN_RIGHT">
+		<g:Label ui:field="commentLabel"></g:Label>	
+		</g:cell>			
+		</g:HorizontalPanel>
+		<g:AbsolutePanel ui:field="tablePanel">
+		<c:CellTable ui:field="proposalHistoryTable"></c:CellTable>
+		<g:HorizontalPanel ui:field="pagerPanel">
+		<c:SimplePager ui:field="simplePager" location="CENTER"></c:SimplePager>
+		</g:HorizontalPanel>
+		</g:AbsolutePanel>
+		<g:HorizontalPanel ui:field="footerPanel">
+		<g:Button ui:field="cikButton">Çık</g:Button>
+		</g:HorizontalPanel>
+	</g:AbsolutePanel>
+</ui:UiBinder> 

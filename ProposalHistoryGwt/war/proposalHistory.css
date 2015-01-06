@@ -1,0 +1,42 @@
+.gwt-Style-MainPanel{
+	background-color:#daf5ff;
+}
+.gwt-Style-TitleLabel{
+	font-weight: bolder;
+	color: #324259;
+	margin: 10px; 
+	font-size: 2em;
+}
+
+.gwt-Style-HistoryPanel{
+	background-color:#337ab7;
+	border: 1px outset;
+	margin-left: 10px;
+}
+.gwt-Style-TeklifLabel{
+	font-weight: bolder;
+	color: white;
+	margin-left: 10px; 
+	margin-top:4px;
+	margin-bottom:4px;
+	font-size: 1em;
+}
+
+.gwt-Style-InfoPanel{
+	margin-top: 10px;
+	margin-right: 5px;
+}
+.gwt-Style-InfoLabel{
+	margin-right: 10px;
+}
+.gwt-Style-TablePanel{
+	margin-left: 10px;
+}
+.gwt-Style-FooterPanel{
+	margin-right: 20px;
+}
+.gwt-Style-ExitButton{
+	background-color:#337ab7;
+	color: white;
+	border: 2px silver outset;
+}
