@@ -67,6 +67,7 @@ public class ProcessDetailsPage extends DialogBox {
 		absolutePanel.add(historyPanel);
 		tablePanel.setWidth("840px");
 		tablePanel.addStyleName("gwt-Style-DetailTablePanel");
+		detailTable.addStyleName("gwt-Style-CellTable");
 		fillTable();
 		absolutePanel.add(tablePanel);
 		footerPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);

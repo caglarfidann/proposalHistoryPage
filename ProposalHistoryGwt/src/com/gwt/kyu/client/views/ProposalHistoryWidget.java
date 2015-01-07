@@ -119,9 +119,11 @@ public class ProposalHistoryWidget extends Composite implements ProposalHistoryP
 		detailImg.setSize("20px","20px");
 		docImg.setSize("20px","20px");
 		proposalHistoryTable.setWidth(String.valueOf((width/2)+250)+"px");
+		proposalHistoryTable.addStyleName("gwt-Style-CellTable");
 		tablePanel.addStyleName("gwt-Style-TablePanel");
 		tablePanel.setWidth(String.valueOf((width/2)+250)+"px");
 		pagerPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+		pagerPanel.addStyleName("gwt-Style-PagerPanel");
 		pagerPanel.setWidth(String.valueOf((width/2)+250)+"px");
 		pagerPanel.add(simplePager);
 		mainPanel.add(tablePanel);
@@ -254,7 +256,7 @@ public class ProposalHistoryWidget extends Composite implements ProposalHistoryP
 		proposalHistoryTable.addColumn(imageSeeDoc, SafeHtmlUtils.fromSafeConstant("<br/>"));
 		proposalHistoryTable.addColumn(imageDetail, SafeHtmlUtils.fromSafeConstant("<br/>"));
 		proposalHistoryTable.addColumn(imageComment, SafeHtmlUtils.fromSafeConstant("<br/>"));
-		proposalHistoryTable.setRowCount(historyList.size(), true);
+		proposalHistoryTable.setRowCount(historyList.size(), false);
 		proposalHistoryTable.setRowData(0, historyList);
 		ListDataProvider<ProposalHistory> dataProvider = new ListDataProvider<ProposalHistory>();
 		dataProvider.addDataDisplay(proposalHistoryTable);
