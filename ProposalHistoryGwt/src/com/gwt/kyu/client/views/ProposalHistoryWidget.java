@@ -111,7 +111,7 @@ public class ProposalHistoryWidget extends Composite implements
 		historyPanel.setWidth(String.valueOf((width / 2) + 250) + "px");
 		historyPanel.addStyleName("gwt-Style-HistoryPanel");
 		mainPanel.add(infoPanel);
-
+		
 		infoPanel.addStyleName("gwt-Style-InfoPanel");
 		infoPanel.setWidth(String.valueOf((width / 2) + 250) + "px");
 		commentImg.setUrl("/image/seeComment.png");
@@ -124,16 +124,18 @@ public class ProposalHistoryWidget extends Composite implements
 		docLabel.setText("Dokumani Goster");
 		docLabel.addStyleName("gwt-Style-InfoLabel");
 		commentImg.setSize("20px", "20px");
+		commentImg.setTitle("See Comment.");
 		detailImg.setSize("20px", "20px");
+		detailImg.setTitle("Proposal History Detail.");
 		docImg.setSize("20px", "20px");
+		docImg.setTitle("See Document.");
 		proposalHistoryTable.setWidth(String.valueOf((width / 2) + 250) + "px");
 		proposalHistoryTable.addStyleName("gwt-Style-CellTable");
 		tablePanel.addStyleName("gwt-Style-TablePanel");
 		tablePanel.setWidth(String.valueOf((width / 2) + 250) + "px");
 		pagerPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		pagerPanel.addStyleName("gwt-Style-PagerPanel");
-		pagerPanel.setWidth(String.valueOf((width / 2) + 250) + "px");
-
+		pagerPanel.setWidth(String.valueOf((width / 2) + 250) + "px"); 
 		pagerPanel.add(simplePager);
 		mainPanel.add(tablePanel);
 		footerPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
@@ -215,7 +217,7 @@ public class ProposalHistoryWidget extends Composite implements
 			}
 		};
 		Column<ProposalHistory, String> imageSeeDoc = new Column<ProposalHistory, String>(
-				new ButtonImageCell()) {
+				new ButtonImageCell("See Proposal History Document.")) {
 			@Override
 			public String getValue(ProposalHistory object) {
 				return "/image/seeDoc.png";
@@ -229,7 +231,7 @@ public class ProposalHistoryWidget extends Composite implements
 					}
 				});
 		Column<ProposalHistory, String> imageDetail = new Column<ProposalHistory, String>(
-				new ButtonImageCell()) {
+				new ButtonImageCell("See Proposal History Detail.")) {
 			@Override
 			public String getValue(ProposalHistory object) {
 				return "/image/seeDetail.png";
@@ -245,7 +247,7 @@ public class ProposalHistoryWidget extends Composite implements
 					}
 				});
 		Column<ProposalHistory, String> imageComment = new Column<ProposalHistory, String>(
-				new ButtonImageCell()) {
+				new ButtonImageCell("See Proposal History Comment.")) {
 			@Override
 			public String getValue(ProposalHistory object) {
 				return "/image/seeComment.png";
