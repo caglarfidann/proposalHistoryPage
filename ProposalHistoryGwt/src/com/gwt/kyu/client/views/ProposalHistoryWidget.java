@@ -10,6 +10,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.SimplePager;
+import com.google.gwt.user.cellview.client.SimplePager.TextLocation;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.AbsolutePanel;
@@ -21,15 +22,18 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.view.client.HasRows;
 import com.google.gwt.view.client.ListDataProvider;
+import com.google.gwt.view.client.Range;
 import com.gwt.kyu.client.presenters.ProposalHistoryPresenter;
 import com.gwt.kyu.client.widgets.ButtonImageCell;
 import com.gwt.kyu.server.ProposalHistoryDetailOperation;
 import com.gwt.kyu.shared.ProposalHistory;
 
-public class ProposalHistoryWidget extends Composite implements ProposalHistoryPresenter.Display{
+public class ProposalHistoryWidget extends Composite implements
+		ProposalHistoryPresenter.Display {
 	private ProposalHistoryPresenter historyPresenter;
-	 ProposalHistoryDetailOperation operation;
+	ProposalHistoryDetailOperation operation;
 	private static ProposalHistoryWidgetUiBinder uiBinder = GWT
 			.create(ProposalHistoryWidgetUiBinder.class);
 
@@ -39,8 +43,9 @@ public class ProposalHistoryWidget extends Composite implements ProposalHistoryP
 
 	public ProposalHistoryWidget() {
 		initWidget(uiBinder.createAndBindUi(this));
-		operation=new ProposalHistoryDetailOperation();
+		operation = new ProposalHistoryDetailOperation();
 	}
+
 	@UiField
 	AbsolutePanel mainPanel;
 	@UiField
@@ -66,70 +71,74 @@ public class ProposalHistoryWidget extends Composite implements ProposalHistoryP
 	@UiField
 	CellTable<ProposalHistory> proposalHistoryTable;
 	@UiField
-	SimplePager simplePager;
-	@UiField
 	HorizontalPanel pagerPanel;
 	@UiField
 	HorizontalPanel footerPanel;
 	@UiField
 	Button cikButton;
+
 	@Override
 	public void clear() {
 		// TODO Auto-generated method stub
 		proposalHistoryTable.setRowCount(0);
 	}
-	private Label proposalLabel=new Label("Teklif Tarihcesi");
+
+	private Label proposalLabel = new Label("Teklif Tarihcesi");
+	private SimplePager simplePager = new SimplePager();
+
 	@Override
 	public void setPresenter(ProposalHistoryPresenter historyPresenter) {
 		// TODO Auto-generated method stub
-		this.historyPresenter=historyPresenter;
+		this.historyPresenter = historyPresenter;
 	}
 
 	@Override
 	public void fillWidget(HasWidgets container) {
 		// TODO Auto-generated method stub
-		int width=Window.getClientWidth();
-		int height=Window.getClientHeight();
+		int width = Window.getClientWidth();
+		int height = Window.getClientHeight();
 		mainPanel = new AbsolutePanel();
-		mainPanel.setSize(String.valueOf(width)+"px",String.valueOf(height)+"px");
+		mainPanel.setSize(String.valueOf(width) + "px", String.valueOf(height)
+				+ "px");
 		mainPanel.addStyleName("gwt-Style-MainPanel");
-		
+
 		mainPanel.add(historyLabel);
 		historyLabel.addStyleName("gwt-Style-TitleLabel");
-		
+
 		historyPanel.add(proposalLabel);
 		proposalLabel.addStyleName("gwt-Style-TeklifLabel");
 		mainPanel.add(historyPanel);
-		historyPanel.setWidth(String.valueOf((width/2)+250)+"px");
+		historyPanel.setWidth(String.valueOf((width / 2) + 250) + "px");
 		historyPanel.addStyleName("gwt-Style-HistoryPanel");
 		mainPanel.add(infoPanel);
-		
+
 		infoPanel.addStyleName("gwt-Style-InfoPanel");
-		infoPanel.setWidth(String.valueOf((width/2)+250)+"px");
+		infoPanel.setWidth(String.valueOf((width / 2) + 250) + "px");
 		commentImg.setUrl("/image/seeComment.png");
 		commentLabel.setText("Gorus ve Yorumlar");
-		
+
 		detailImg.setUrl("/image/seeDetail.png");
 		detailLabel.setText("Surec Detaylarini Goster");
 		detailLabel.addStyleName("gwt-Style-InfoLabel");
 		docImg.setUrl("/image/seeDoc.png");
 		docLabel.setText("Dokumani Goster");
 		docLabel.addStyleName("gwt-Style-InfoLabel");
-		commentImg.setSize("20px","20px");
-		detailImg.setSize("20px","20px");
-		docImg.setSize("20px","20px");
-		proposalHistoryTable.setWidth(String.valueOf((width/2)+250)+"px");
+		commentImg.setSize("20px", "20px");
+		detailImg.setSize("20px", "20px");
+		docImg.setSize("20px", "20px");
+		proposalHistoryTable.setWidth(String.valueOf((width / 2) + 250) + "px");
 		proposalHistoryTable.addStyleName("gwt-Style-CellTable");
 		tablePanel.addStyleName("gwt-Style-TablePanel");
-		tablePanel.setWidth(String.valueOf((width/2)+250)+"px");
+		tablePanel.setWidth(String.valueOf((width / 2) + 250) + "px");
 		pagerPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		pagerPanel.addStyleName("gwt-Style-PagerPanel");
-		pagerPanel.setWidth(String.valueOf((width/2)+250)+"px");
+		pagerPanel.setWidth(String.valueOf((width / 2) + 250) + "px");
+
 		pagerPanel.add(simplePager);
 		mainPanel.add(tablePanel);
 		footerPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
 		footerPanel.addStyleName("gwt-Style-FooterPanel");
-		footerPanel.setWidth(String.valueOf((width/2)+250)+"px");
+		footerPanel.setWidth(String.valueOf((width / 2) + 250) + "px");
 		footerPanel.add(cikButton);
 		cikButton.addStyleName("gwt-Style-ExitButton");
 		mainPanel.add(footerPanel);
@@ -212,11 +221,13 @@ public class ProposalHistoryWidget extends Composite implements ProposalHistoryP
 				return "/image/seeDoc.png";
 			}
 		};
-		imageSeeDoc.setFieldUpdater(new FieldUpdater<ProposalHistory, String>() {
-			public void update(int index, ProposalHistory object, String value) {
-				Window.alert("See Doc :"+object.getTeklifNo());
-			}
-		});
+		imageSeeDoc
+				.setFieldUpdater(new FieldUpdater<ProposalHistory, String>() {
+					public void update(int index, ProposalHistory object,
+							String value) {
+						Window.alert("See Doc :" + object.getTeklifNo());
+					}
+				});
 		Column<ProposalHistory, String> imageDetail = new Column<ProposalHistory, String>(
 				new ButtonImageCell()) {
 			@Override
@@ -224,12 +235,15 @@ public class ProposalHistoryWidget extends Composite implements ProposalHistoryP
 				return "/image/seeDetail.png";
 			}
 		};
-		imageDetail.setFieldUpdater(new FieldUpdater<ProposalHistory, String>() {
-			public void update(int index, ProposalHistory object, String value) {
-				ProcessDetailsPage detail=new ProcessDetailsPage(operation.getDetail(object.getSiraNo()));
-				detail.show();
-			}
-		});
+		imageDetail
+				.setFieldUpdater(new FieldUpdater<ProposalHistory, String>() {
+					public void update(int index, ProposalHistory object,
+							String value) {
+						ProcessDetailsPage detail = new ProcessDetailsPage(
+								operation.getDetail(object.getSiraNo()));
+						detail.show();
+					}
+				});
 		Column<ProposalHistory, String> imageComment = new Column<ProposalHistory, String>(
 				new ButtonImageCell()) {
 			@Override
@@ -237,32 +251,62 @@ public class ProposalHistoryWidget extends Composite implements ProposalHistoryP
 				return "/image/seeComment.png";
 			}
 		};
-		imageComment.setFieldUpdater(new FieldUpdater<ProposalHistory, String>() {
-			public void update(int index, ProposalHistory object, String value) {
-				Window.alert("See Comment :"+object.getTeklifNo());
-			}
-		});
+		imageComment
+				.setFieldUpdater(new FieldUpdater<ProposalHistory, String>() {
+					public void update(int index, ProposalHistory object,
+							String value) {
+						Window.alert("See Comment :" + object.getTeklifNo());
+					}
+				});
 		proposalHistoryTable.addColumn(SiraNo, "Sira No");
 		proposalHistoryTable.addColumn(TeklifNo, "Teklif No");
 		proposalHistoryTable.addColumn(Durum, "Durum");
-		proposalHistoryTable.addColumn(SubeTeklifGiris, "Sube Teklif Giris Tarihi");
+		proposalHistoryTable.addColumn(SubeTeklifGiris,
+				"Sube Teklif Giris Tarihi");
 		proposalHistoryTable.addColumn(SubeOnayTarih, "Sube Onay Tarihi");
 		proposalHistoryTable.addColumn(OnayTarih, "Onay Tarihi");
 		proposalHistoryTable.addColumn(RetTarih, "Ret Tarihi");
 		proposalHistoryTable.addColumn(SarfinazarTarih, "Sarfinazar Tarihi");
-		proposalHistoryTable.addColumn(SonOnaylayanKullanici, "Son Onaylayan Kullanici");
+		proposalHistoryTable.addColumn(SonOnaylayanKullanici,
+				"Son Onaylayan Kullanici");
 		proposalHistoryTable.addColumn(ReddedenKullanici, "Reddeden Kullanici");
-		proposalHistoryTable.addColumn(SarfinazarEdenKullanici, "Sarfinazar Eden Kullanici");
-		proposalHistoryTable.addColumn(imageSeeDoc, SafeHtmlUtils.fromSafeConstant("<br/>"));
-		proposalHistoryTable.addColumn(imageDetail, SafeHtmlUtils.fromSafeConstant("<br/>"));
-		proposalHistoryTable.addColumn(imageComment, SafeHtmlUtils.fromSafeConstant("<br/>"));
+		proposalHistoryTable.addColumn(SarfinazarEdenKullanici,
+				"Sarfinazar Eden Kullanici");
+		proposalHistoryTable.addColumn(imageSeeDoc,
+				SafeHtmlUtils.fromSafeConstant("<br/>"));
+		proposalHistoryTable.addColumn(imageDetail,
+				SafeHtmlUtils.fromSafeConstant("<br/>"));
+		proposalHistoryTable.addColumn(imageComment,
+				SafeHtmlUtils.fromSafeConstant("<br/>"));
 		proposalHistoryTable.setRowCount(historyList.size(), false);
 		proposalHistoryTable.setRowData(0, historyList);
 		ListDataProvider<ProposalHistory> dataProvider = new ListDataProvider<ProposalHistory>();
 		dataProvider.addDataDisplay(proposalHistoryTable);
-	    dataProvider.setList(historyList);
-	    simplePager.setDisplay(proposalHistoryTable);
-	    simplePager.setPageSize(7);
+		dataProvider.setList(historyList);
+		SimplePager.Resources pagerResources = GWT
+				.create(SimplePager.Resources.class);
+		simplePager = new SimplePager(TextLocation.CENTER, pagerResources,false, 0, true) {
+		/*	@Override
+			public boolean hasNextPage() {
+				if (this.getPage() < (this.getPageCount() - 1)) {
+					return true;
+				}
+				return false;
+			}*/
+			@Override
+			public void nextPage() {
+				HasRows display = getDisplay();
+				if (display != null) {
+					Range range = display.getVisibleRange();
+					if (hasNextPage()){
+						setPageStart(range.getStart() + range.getLength());			    
+					}	
+				}
+			}
+		};
+		simplePager.setDisplay(proposalHistoryTable);
+		simplePager.setPageSize(7);
+		simplePager.setRangeLimited(false);	
 	}
 
 	@Override

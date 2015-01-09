@@ -34,7 +34,6 @@
 		<g:AbsolutePanel ui:field="tablePanel">
 		<c:CellTable ui:field="proposalHistoryTable"></c:CellTable>
 		<g:HorizontalPanel ui:field="pagerPanel">
-		<c:SimplePager ui:field="simplePager" location="CENTER"></c:SimplePager>
 		</g:HorizontalPanel>
 		</g:AbsolutePanel>
 		<g:HorizontalPanel ui:field="footerPanel">
